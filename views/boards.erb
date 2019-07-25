@@ -1,0 +1,21 @@
+<h3>Boards</h3>
+
+<% if @sub_boards.any? %>
+  <ul>
+    <% @sub_boards.each do |board| %>
+      <li><a href="/boards/<%= board.id %>"><%= board.name %></a></li>
+  <% end %>
+  </ul>
+<% else %>
+  <p>There are currently no boards to display.</p>
+<% end %>
+
+<a href="/boards/new">Add a new board</a>
+
+<form action="/boards">
+  <div class="form-group">
+    <label for="search">Search</label>
+    <input id="search" name="search" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">Search</button>
+</form>

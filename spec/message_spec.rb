@@ -9,7 +9,7 @@ describe '#Message' do
     Board.clear()
     Message.clear()
     @board = Board.new({:name => "Gregs fishing whatever doinks gang"})
-    @board.save()
+    Board.save(@board)
   end
 
   describe('#==') do
@@ -62,7 +62,7 @@ describe '#Message' do
   describe('.find_by_board') do
     it("finds messages for a board") do
       board2 = Board.new({:name => "Fish juice"})
-      board2.save
+      Board.save(board2)
       message = Message.new({:title => 'Schwarma gas in the spaghetti house', :body => 'Mondays youre lookin at it.', :timestamp => "today", :board_id => @board.id})
       message.save()
       message2 = Message.new({:title => 'Jengus pole', :body => 'today was the best chungus of life ever had', :timestamp => "today", :board_id => board2.id})
@@ -74,7 +74,7 @@ describe '#Message' do
   describe('#messages') do
     it("returns a board's messages") do
       board = Board.new({:name => "Gregs fishing whatever doinks gang"})
-      board.save()
+      Board.save(board)
       message = Message.new({:title => 'Schwarma gas in the spaghetti house', :body => 'Mondays youre lookin at it.', :timestamp => "today", :board_id => board.id})
       message.save()
       message2 = Message.new({:title => 'Jengus pole', :body => 'today was the best chungus of life ever had', :timestamp => "today", :board_id => board.id})

@@ -6,8 +6,9 @@ class Board
   @@total_rows = 0
 
   def initialize(attributes)
+    @@total_rows += 1
     @name = attributes.fetch(:name)
-    @id = id || @@total_rows += 1
+    @id = @@total_rows
   end
 
   def ==(board_to_compare)
@@ -41,8 +42,8 @@ class Board
     Message.find_by_board(self.id)
   end
 
-  def save
-    @@sub_boards[self.id] = Board.new({:name => self.name})
+  def self.save (board)
+    @@sub_boards[board.id] = board
   end
 
   def update(name)

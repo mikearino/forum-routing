@@ -1,1 +1,22 @@
 <h2>This is sub-board.erb</h2>
+<% if @thread.messages.any? %>
+  <ul>
+    <% @thread.messages.each do |thread| %>
+      <li><a href="/boards/<%= thread.id %>"><%= thread.title %></a></li>
+  <% end %>
+  </ul>
+<% else %>
+  <p>There are currently no threads to display.</p>
+<% end %>
+
+<form action="/boards/<%= @thread.id %>/threads" method="post">
+  <div class="form-group">
+    <label for="board_name">Thread title</label>
+    <input id="name" class="form-control" type="text" name="thread_title">
+    <label for="board_name">Thread body</label>
+    <input id="name" class="form-control" type="text" name="thread_body">
+    <label for="board_name">Thread time</label>
+    <input id="name" class="form-control" type="text" name="thread_time">
+  </div>
+  <button type="submit" class="btn">Create</button>
+</form>

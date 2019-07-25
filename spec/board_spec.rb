@@ -18,9 +18,9 @@ describe '#Board' do
   describe('#save') do
     it("saves ") do
       board = Board.new({:name => "Gregs fishing whatever doinks gang"}) # nil added as second argument
-      board.save()
+      Board.save(board)
       board2 = Board.new({:name => "Doinks' fishing whatever doinks gang"}) # nil added as second argument
-      board2.save()
+      Board.save(board2)
       expect(Board.all).to(eq([board, board2]))
     end
   end
@@ -28,9 +28,9 @@ describe '#Board' do
   describe('.find') do
     it("finds an album by id") do
       board = Board.new({:name => "Gregs fishing whatever doinks gang."}) # nil added as second argument
-      board.save()
+      Board.save(board)
       board2 = Board.new({:name => "Doinks' fishing whatever doinks gang."}) # nil added as second argument
-      board2.save()
+      Board.save(board2)
       expect(Board.find(board.id)).to(eq(board))
     end
   end
@@ -38,9 +38,9 @@ describe '#Board' do
   describe('.clear') do
     it("clears all boards") do
       board = Board.new({:name => "Gregs fishing whatever doinks gang"}) # nil added as second argument
-      board.save()
+      Board.save(board)
       board2 = Board.new({:name => "Doinks' fishing whatever doinks gang"}) # nil added as second argument
-      board2.save()
+      Board.save(board2)
       Board.clear()
       expect(Board.all).to(eq([]))
     end
@@ -49,9 +49,9 @@ describe '#Board' do
   describe('#delete') do
     it("deletes an board by id") do
       board = Board.new({:name => "Gregs fishing whatever doinks gang"}) # nil added as second argument
-      board.save()
+      Board.save(board)
       board2 = Board.new({:name => "Doinks' fishing whatever doinks gang"}) # nil added as second argument
-      board2.save()
+      Board.save(board2)
       board.delete()
       expect(Board.all).to(eq([board2]))
     end
@@ -60,9 +60,9 @@ describe '#Board' do
   # describe('.search') do
   #   it('finds an album by name')do
   #   board = Board.new({:name => "Gregs fishing whatever doinks gang"}) # nil added as second argument
-  #   board.save()
+  #   Board.save(board)
   #   board2 = Board.new({:name => "Doinks' fishing whatever doinks gang"}) # nil added as second argument
-  #   board2.save()
+  #   Board.save(board2)
   #   board.delete()
   #   search = Board.search("Doinks' fishing whatever doinks gang")
   #   expect(search).to(eq(board2))
@@ -72,7 +72,7 @@ describe '#Board' do
   describe('#update') do
     it("updates a board by id") do
       board = Board.new({:name => "Gregs fishing whatever doinks gang"}) # nil added as second argument
-      board.save()
+      Board.save(board)
       board.update("Fish Guts")
       expect(board.name).to(eq("Fish Guts"))
     end
